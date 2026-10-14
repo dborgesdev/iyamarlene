@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.vercel/
+.env.local
+.env.*.local
+
+# Materiais locais de handoff
+/iyamarlene-v2-assets-e-handoff.zip
+/PROMPT-CODEX.md

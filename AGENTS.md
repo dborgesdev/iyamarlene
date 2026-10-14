@@ -1,0 +1,2 @@
+# Diretrizes do projeto
+Leia `docs/project.md` antes de implementar. Preserve a identidade e as informações verificadas. Nunca invente dados empresariais, modalidade ou local de atendimento, resultados espirituais, credenciais e depoimentos. React/TS/Vite/Tailwind; cada seção em seu `.tsx`, App apenas compõe. Separar dados, links e UI. Usar pnpm e preservar lockfile. Garantir SEO, acessibilidade, responsividade e deploy Vercel estático. Validar build/rotas/assets. Não fazer merge sem aprovação explícita.
