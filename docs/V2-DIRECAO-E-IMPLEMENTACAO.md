@@ -46,7 +46,7 @@ O site deve lembrar a nova referência editorial pelo peso fotográfico e compos
 
 ## Refinamentos posteriores aprovados — 14/10/2026
 
-Direção artística mantida, sem troca de assets ou estrutura principal. Alternância desktop: Produtos com imagem à esquerda, Sobre com texto à esquerda. No mobile, Sobre apresenta texto antes da imagem. Texto de corpo ampliado e texturas suavizadas; cards sem numeração visual, com recortes específicos por serviço. Avisos técnicos visuais de imagens conceituais removidos por solicitação explícita; distinção preservada nos atributos alt e nesta documentação. Rodapé com crédito: Desenvolvido por Douglas Borges — Smart Local (https://smartlocal.com.br), nova aba com noopener noreferrer.
+Direção artística mantida, sem troca de assets ou estrutura principal. Alternância desktop: Produtos com imagem à esquerda, Sobre com texto à esquerda. No mobile, Sobre apresenta texto antes da imagem. Texto de corpo ampliado e texturas suavizadas; cards sem numeração visual, com recortes específicos por serviço. Avisos técnicos visuais de imagens conceituais removidos por solicitação explícita; distinção preservada nos atributos alt e nesta documentação. Rodapé com crédito: Desenvolvido por Douglas Borges - Smart Local (https://smartlocal.com.br), nova aba com noopener noreferrer.
 
 ## Biografia, retrato e horários — atualização autorizada
 
@@ -54,4 +54,4 @@ O relato biográfico publicado pela cliente e fornecido pelo contratante substit
 
 Sobre preserva o grid e as cores; agora usa public/images/iya-marlene.jpg (1080 × 1350), retrato real, sem filtros, foco em 50% 30% e alt Retrato de Iyá Marlene. A imagem conceitual anterior fica apenas como referência histórica do pacote, fora da interface.
 
-Availability.tsx exibe dois blocos antes do contato final: online de segunda a sexta, 20h às 22h; presencial aos sábados, 10h às 13h. Endereço não informado; disponibilidade e confirmação pelo WhatsApp, sem calendário ou reserva automática. Estas informações substituem a antiga pendência de biografia e modalidade, sem autorizar publicação final.
+Availability.tsx exibe dois blocos antes do contato final: online e presencial: segunda, quinta, sexta, sábado e domingo, a partir das 16h. Endereço não informado; disponibilidade e confirmação pelo WhatsApp, sem calendário ou reserva automática. Estas informações substituem a antiga pendência de biografia e modalidade, sem autorizar publicação final.

@@ -4,6 +4,8 @@ export function whatsapp(message: string) {
   return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(message)}`;
 }
 export const messages = {
+  floating:
+    "Olá, Iyá Marlene! Conheci seu trabalho pelo site e gostaria de saber mais sobre os atendimentos espirituais e agendar uma consulta. Poderia me informar a disponibilidade?",
   general:
     "Olá, Iyá Marlene! Conheci seu trabalho pelo site e gostaria de saber mais sobre os atendimentos.",
   booking:
@@ -49,6 +51,7 @@ export const services = [
   },
 ];
 export const navigation = [
+  { label: "Início", href: "#inicio" },
   { label: "Atendimentos", href: "#atendimentos" },
   { label: "Produtos", href: "#produtos" },
   { label: "Sobre", href: "#sobre" },
@@ -66,12 +69,16 @@ export const biography = {
   portrait: "/images/iya-marlene.jpg",
 } as const;
 
+const attendanceSchedule = {
+  days: "Segunda, quinta, sexta, sábado e domingo",
+  hours: "A partir das 16h",
+} as const;
+
 export const availability = [
   {
     id: "online",
     title: "Atendimento online",
-    days: "Segunda a sexta-feira",
-    hours: "Das 20h às 22h",
+    ...attendanceSchedule,
     cta: "Agendar atendimento online",
     message:
       "Olá, Iyá Marlene! Gostaria de saber sobre a disponibilidade para um atendimento online.",
@@ -79,8 +86,7 @@ export const availability = [
   {
     id: "presencial",
     title: "Atendimento presencial",
-    days: "Sábados",
-    hours: "Das 10h às 13h",
+    ...attendanceSchedule,
     cta: "Agendar atendimento presencial",
     message:
       "Olá, Iyá Marlene! Gostaria de saber sobre a disponibilidade para um atendimento presencial.",

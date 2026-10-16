@@ -30,13 +30,13 @@ export function Header() {
 
   return (
     <header className="relative z-30 bg-sand lg:absolute lg:inset-x-0 lg:top-0 lg:bg-transparent">
-      <div className="container-site grid h-20 grid-cols-[1fr_auto] items-center gap-4 md:grid-cols-[1fr_auto_1fr] lg:h-24">
+      <div className="container-site grid h-20 grid-cols-[1fr_auto] items-center gap-4 md:grid-cols-[auto_1fr_auto] lg:h-24">
         <div className="justify-self-start">
           <Brand />
         </div>
         <nav
           aria-label="Navegação principal"
-          className="hidden items-center gap-6 rounded-full md:flex lg:bg-sand/85 lg:px-5 lg:py-1 xl:gap-8"
+          className="hidden justify-self-center items-center gap-4 rounded-full md:flex lg:bg-sand/85 lg:px-5 lg:py-1 xl:gap-7"
         >
           {navigation.map((item) => (
             <a
