@@ -7,6 +7,8 @@ import { Availability } from "./components/sections/Availability";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { Footer } from "./components/sections/Footer";
 
+import { WhatsAppFloat } from "./components/ui/WhatsAppFloat";
+
 export default function App() {
   return (
     <>
@@ -26,6 +28,7 @@ export default function App() {
         <FinalCTA />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   );
 }

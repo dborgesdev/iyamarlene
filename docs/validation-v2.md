@@ -48,7 +48,7 @@ Esta revisão substitui a descrição anterior de legendas visuais e da posiçã
 - Cards com recortes específicos no próprio CSS, mantendo arquivos originais: cartas em destaque, aproximação da tigela de búzios e foco em vela/flores no terceiro atendimento. Rótulos redundantes removidos; CTAs alinhados entre colunas.
 - Opacidade da textura de serviços reduzida de 8% para 3,5%; de produtos, de 12% para 4,5%.
 - Avisos gerais, legendas técnicas e rótulos de imagens removidos da apresentação visual conforme solicitado. Alt text mantém descrições honestas da natureza conceitual, sem alegar retratos ou catálogo reais.
-- Crédito Desenvolvido por Douglas Borges — Smart Local incluído com https://smartlocal.com.br, target=_blank e rel=noopener noreferrer. Rodapé com espaçamento e leitura mobile revisados.
+- Crédito Desenvolvido por Douglas Borges - Smart Local incluído com https://smartlocal.com.br, target=_blank e rel=noopener noreferrer. Rodapé com espaçamento e leitura mobile revisados.
 
 ### Validações desta rodada
 
@@ -80,7 +80,7 @@ public/images/iya-marlene.jpg, 1080 × 1350 px, 320.989 bytes. JPEG original man
 
 ### Horários e conversão
 
-Online: segunda a sexta-feira, 20h às 22h. Presencial: sábados, 10h às 13h. Blocos antes do contato final com observação para consultar disponibilidade e confirmar pelo WhatsApp. Sem endereço, cidade, vagas, duração, calendário ou reservas automáticas. Mensagens online/presencial decodificadas no navegador e conferidas literalmente com o pedido, número 5511947069990; encodeURIComponent compartilhado, sem nova lógica de URL.
+Online e presencial: segunda, quinta, sexta, sábado e domingo, a partir das 16h. Blocos antes do contato final com observação para consultar disponibilidade e confirmar pelo WhatsApp. Sem endereço, cidade, vagas, duração, calendário ou reservas automáticas. Mensagens online/presencial decodificadas no navegador e conferidas literalmente com o pedido, número 5511947069990; encodeURIComponent compartilhado, sem nova lógica de URL.
 
 ### Validações executadas
 
@@ -94,3 +94,16 @@ Online: segunda a sexta-feira, 20h às 22h. Presencial: sábados, 10h às 13h. B
 - Lint não configurado. Sem Lighthouse ou auditoria automatizada completa de acessibilidade. Sem commit, push, PR, merge ou deploy.
 
 Preview em http://127.0.0.1:4174/. Publicação final depende de aprovação explícita e revisão editorial/direitos dos demais materiais; endereço/cidade presencial ainda não informados. Biografia, modalidades, horários e integração da fotografia já autorizados.
+
+## Navegação, novos horários e WhatsApp flutuante — 16/10/2026
+
+- Início incluído como primeiro item do Header desktop e mobile, com destino #inicio; ordem completa Início / Atendimentos / Produtos / Sobre. Rodapé mantém sua navegação original e crédito exato Desenvolvido por Douglas Borges - Smart Local.
+- Dias e horário centralizados em attendanceSchedule, compartilhados entre online e presencial: segunda, quinta, sexta, sábado e domingo, a partir das 16h. Sem encerramento informado; mensagens por modalidade preservadas. Referências aos horários substituídos removidas dos dados, interface e documentação.
+- WhatsAppFloat.tsx incluído pelo App: SVG reconhecível, link compartilhado whatsapp(messages.floating), nova aba, noopener noreferrer, aria-label Agendar consulta pelo WhatsApp. Botão de 56 px, safe area, foco visível e transição de cor sob a regra reduced motion existente. Mantém-se à direita e ajusta a distância inferior quando necessário para evitar texto/links, inclusive do rodapé. Sem dependências adicionais ou mudanças no Hero/fotos/Sobre/cards/produtos.
+- pnpm typecheck e pnpm build aprovados. Build final: CSS 20,58 kB (5,44 kB gzip); JS 247,94 kB (76,88 kB gzip).
+- Revisão visual de Header e botão em 375, 768, 1024 e 1440 px, sem overflow horizontal. Número 5511947069990 e mensagem flutuante decodificada conferidos literalmente com o pedido; target e rel verificados. Nenhuma mensagem enviada.
+- Enter abre menu móvel; Início acionado por Enter fecha menu e leva a #inicio. Retorno pelo Início desktop testado. Todos os destinos de âncoras existem.
+- Horários das duas modalidades conferidos no DOM e visualmente; busca em src, docs e README não encontrou horários substituídos. Crédito exato conferido no DOM.
+- Botão focado por teclado e visível no mobile; conferência geométrica confirmou ausência de sobreposição com texto do rodapé após reposicionamento. Console sem avisos ou erros capturados.
+- Sem lint configurado ou auditoria automatizada completa de acessibilidade. Insets físicos de dispositivos não foram emulados; implementação usa env(safe-area-inset-*).
+- Preview em http://127.0.0.1:4173/. Sem commit, push, PR ou merge nesta rodada; alterações locais sobre main.

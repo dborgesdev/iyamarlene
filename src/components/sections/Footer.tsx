@@ -15,15 +15,17 @@ export function Footer() {
           aria-label="Navegação do rodapé"
           className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm"
         >
-          {navigation.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="inline-flex min-h-11 items-center"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navigation
+            .filter((item) => item.href !== "#inicio")
+            .map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="inline-flex min-h-11 items-center"
+              >
+                {item.label}
+              </a>
+            ))}
           <a
             href={INSTAGRAM}
             target="_blank"
@@ -54,7 +56,7 @@ export function Footer() {
           rel="noopener noreferrer"
           className="inline-block rounded py-1 hover:text-forest"
         >
-          Desenvolvido por Douglas Borges — Smart Local
+          Desenvolvido por Douglas Borges - Smart Local
         </a>
       </div>
     </footer>
