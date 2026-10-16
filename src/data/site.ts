@@ -16,6 +16,7 @@ export const messages = {
 export const services = [
   {
     index: "01",
+    cta: "Consultar atendimento",
     image: "/images/v2/cartas.webp",
     imageAlt: "Imagem conceitual de cartas sobre uma mesa",
     imagePosition: "55% 66%",
@@ -27,6 +28,7 @@ export const services = [
   },
   {
     index: "02",
+    cta: "Consultar atendimento",
     image: "/images/v2/buzios.webp",
     imageAlt: "Imagem conceitual de búzios em uma tigela de madeira",
     imagePosition: "69% 61%",
@@ -38,6 +40,7 @@ export const services = [
   },
   {
     index: "03",
+    cta: "Consultar atendimento",
     image: "/images/v2/trabalhos-espirituais.webp",
     imageAlt:
       "Imagem conceitual de velas e flores, sem registro de trabalho real",
@@ -48,6 +51,22 @@ export const services = [
     title: "Trabalhos espirituais",
     description:
       "Conheça os trabalhos realizados por Iyá Marlene e converse diretamente para entender as possibilidades de atendimento.",
+  },
+  {
+    index: "04",
+    title: "Limpeza de Ambientes",
+    description:
+      "Trabalho espiritual voltado à limpeza e harmonização energética de ambientes, realizado mediante agendamento e orientação prévia de Iyá Marlene.",
+    cta: "Agendar limpeza",
+    message:
+      "Olá, Iyá Marlene! Conheci seu trabalho pelo site e gostaria de agendar uma limpeza espiritual de ambiente. Poderia me informar como funciona e quais horários estão disponíveis?",
+    image: "/images/v2/textura-botanica.webp",
+    imageAlt:
+      "Composição conceitual de folhagens e luz natural em um ambiente, sem registro de trabalho real",
+    imagePosition: "100% 20%",
+    imageScale: 2,
+    imageWidth: 1600,
+    imageHeight: 900,
   },
 ];
 export const navigation = [

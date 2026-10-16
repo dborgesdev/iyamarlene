@@ -12,7 +12,7 @@ Conversa comercial de WhatsApp de 13/10/2026, perfil Instagram @yalorixa.marlene
 
 - Nome Iyá Marlene / Yalorixá Marlene.
 - WhatsApp +55 11 94706-9990; Instagram https://www.instagram.com/yalorixa.marlene/.
-- Consultas com cartas, jogo de búzios e trabalhos espirituais.
+- Consultas com cartas, jogo de búzios, trabalhos espirituais e Limpeza de Ambientes.
 - Produtos: banhos de ervas, sabão/sabonetes e perfumes. Detalhes do catálogo e disponibilidade devem ser consultados.
 - Atendimento online: segunda, quinta, sexta, sábado e domingo, a partir das 16h.
 - Atendimento presencial: segunda, quinta, sexta, sábado e domingo, a partir das 16h. Endereço e cidade ainda não informados.
@@ -38,7 +38,7 @@ CTA: Conheça mais pelo Instagram. Não expandir o relato com datas, tempo de ex
 Uma página: Hero → serviços → produtos → Sobre → modalidades e horários → contato final → rodapé. Conversão por WhatsApp, sem checkout, formulário que armazena dados, calendário interativo ou sistema de reservas.
 
 - Hero aprovado: Orientação, escuta e acolhimento; CTA Agendar uma consulta.
-- Serviços: Jogo de cartas, Jogo de búzios e Trabalhos espirituais; descrições editoriais e mensagens específicas em src/data/site.ts.
+- Serviços: Jogo de cartas, Jogo de búzios, Trabalhos espirituais e Limpeza de Ambientes; descrições editoriais e mensagens específicas em src/data/site.ts.
 - Produtos: banhos, sabonetes e perfumes, sem estoque ou catálogo inventados.
 - Sobre: biografia acima à esquerda e fotografia real à direita no desktop; texto antes da foto no mobile.
 - Modalidades e horários: dois blocos discretos antes do CTA final. Dados e mensagens em src/data/site.ts; apresentação em Availability.tsx. Observação: Consulte a disponibilidade e confirme seu agendamento pelo WhatsApp.
@@ -72,3 +72,16 @@ Horários substituídos por informação fornecida pelo contratante: online e pr
 Header: Início, Atendimentos, Produtos, Sobre; Início aponta para #inicio no desktop e mobile, mantendo scroll suave e fechamento do menu. Rodapé mantém seus links e crédito exato.
 
 WhatsAppFloat.tsx é um componente reutilizável, circular, fixo à direita, com SVG reconhecível, área de toque de 56 px, safe area, foco visível e link seguro pela função whatsapp. Mensagem em messages.floating. Ajusta a distância inferior para evitar linhas de texto e links na área ocupada, sem modificar o layout aprovado. Sem animação de posição; transições de cor respeitam reduced motion existente.
+
+## Quarto serviço — Limpeza de Ambientes
+
+Inclusão autorizada pelo contratante, após os três serviços existentes, na branch feat/limpeza-ambientes.
+
+- Título: Limpeza de Ambientes
+- Descrição: Trabalho espiritual voltado à limpeza e harmonização energética de ambientes, realizado mediante agendamento e orientação prévia de Iyá Marlene.
+- CTA: Agendar limpeza
+- Mensagem: Olá, Iyá Marlene! Conheci seu trabalho pelo site e gostaria de agendar uma limpeza espiritual de ambiente. Poderia me informar como funciona e quais horários estão disponíveis?
+- Link gerado pela função whatsapp existente, número 5511947069990 e encodeURIComponent.
+- Fotografia conceitual: recorte de folhagens de public/images/v2/textura-botanica.webp, distinto das imagens de oráculos; alt explicita natureza conceitual, sem alegar registro real. Não foi criado ou substituído asset.
+- Grid: uma coluna abaixo de 768 px, duas entre 768 e 1279 px, quatro a partir de 1280 px. Textos mantidos em 16 px; alturas e CTAs alinhados por linha.
+- Não presumir preço, duração, deslocamento, modalidade ou disponibilidade de horários para esse serviço. Confirmar detalhes pelo WhatsApp; os blocos gerais de horários não constituem agenda específica da limpeza.
