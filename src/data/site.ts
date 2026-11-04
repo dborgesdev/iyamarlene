@@ -70,10 +70,10 @@ export const services = [
   },
 ];
 export const navigation = [
-  { label: "Início", href: "#inicio" },
-  { label: "Atendimentos", href: "#atendimentos" },
-  { label: "Produtos", href: "#produtos" },
-  { label: "Sobre", href: "#sobre" },
+  { label: "Início", href: "/#inicio" },
+  { label: "Atendimentos", href: "/#atendimentos" },
+  { label: "Produtos", href: "/produtos" },
+  { label: "Sobre", href: "/#sobre" },
 ] as const;
 
 export const DEVELOPER_URL = "https://smartlocal.com.br";

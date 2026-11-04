@@ -1,7 +1,7 @@
 export function Brand() {
   return (
     <a
-      href="#inicio"
+      href="/#inicio"
       aria-label="Iyá Marlene, início"
       className="inline-flex shrink-0 flex-col items-center"
     >
