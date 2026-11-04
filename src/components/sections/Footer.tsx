@@ -1,3 +1,4 @@
+import { legalPages } from "../../data/legal";
 import {
   DEVELOPER_URL,
   INSTAGRAM,
@@ -16,7 +17,7 @@ export function Footer() {
           className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm"
         >
           {navigation
-            .filter((item) => item.href !== "#inicio")
+            .filter((item) => item.href !== "/#inicio")
             .map((item) => (
               <a
                 key={item.href}
@@ -42,6 +43,15 @@ export function Footer() {
           >
             WhatsApp
           </a>
+          {Object.entries(legalPages).map(([slug, page]) => (
+            <a
+              key={slug}
+              href={`/${slug}`}
+              className="inline-flex min-h-11 items-center"
+            >
+              {page.title}
+            </a>
+          ))}
         </nav>
         <p className="text-center text-sm leading-5 text-muted lg:text-right">
           © {new Date().getFullYear()} Iyá Marlene.

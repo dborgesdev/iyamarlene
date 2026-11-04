@@ -8,3 +8,8 @@ dist/
 # Materiais locais de handoff
 /iyamarlene-v2-assets-e-handoff.zip
 /PROMPT-CODEX.md
+
+.wrangler/
+.dev.vars
+.output/
+.test-output/

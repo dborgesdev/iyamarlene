@@ -1,10 +1,29 @@
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useCart } from "../cart/CartProvider";
+import { ArrowUpRight, Menu, X, ShoppingBag } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { messages, navigation, whatsapp } from "../../data/site";
 
 import { Brand } from "../ui/Brand";
 
 export function Header() {
+  const { cart } = useCart();
+  const commerceLinks = (
+    <>
+      <a
+        href="https://loja.iyamarlene.com.br/minha-conta/"
+        className="inline-flex min-h-11 items-center"
+      >
+        Minha conta
+      </a>
+      <a
+        href="/carrinho"
+        className="inline-flex min-h-11 items-center gap-1"
+        aria-label={`Carrinho, ${cart?.items_count || 0} itens`}
+      >
+        <ShoppingBag aria-hidden="true" size={18} /> {cart?.items_count || 0}
+      </a>
+    </>
+  );
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
 
@@ -16,7 +35,7 @@ export function Header() {
         toggle.current?.focus();
       }
     }
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
     const closeOnDesktop = () => {
       if (desktop.matches) setOpen(false);
     };
@@ -30,13 +49,13 @@ export function Header() {
 
   return (
     <header className="relative z-30 bg-sand lg:absolute lg:inset-x-0 lg:top-0 lg:bg-transparent">
-      <div className="container-site grid h-20 grid-cols-[1fr_auto] items-center gap-4 md:grid-cols-[auto_1fr_auto] lg:h-24">
+      <div className="container-site grid h-20 grid-cols-[1fr_auto_auto] items-center gap-4 lg:grid-cols-[auto_1fr_auto] lg:h-24">
         <div className="justify-self-start">
           <Brand />
         </div>
         <nav
           aria-label="Navegação principal"
-          className="hidden justify-self-center items-center gap-4 rounded-full md:flex lg:bg-sand/85 lg:px-5 lg:py-1 xl:gap-7"
+          className="hidden justify-self-center items-center gap-4 rounded-full lg:flex lg:bg-sand/85 lg:px-5 lg:py-1 xl:gap-4"
         >
           {navigation.map((item) => (
             <a
@@ -47,19 +66,28 @@ export function Header() {
               {item.label}
             </a>
           ))}
+          {commerceLinks}
         </nav>
         <a
-          className="hidden min-h-12 items-center justify-self-end gap-2 rounded-full bg-forest px-5 py-3 text-[15px] font-semibold text-white hover:bg-[#24372d] md:inline-flex"
+          className="hidden min-h-12 items-center justify-self-end gap-2 rounded-full bg-forest px-5 py-3 text-[15px] font-semibold text-white hover:bg-[#24372d] lg:inline-flex"
           target="_blank"
           rel="noopener noreferrer"
           href={whatsapp(messages.booking)}
         >
           Agendar consulta <ArrowUpRight aria-hidden="true" size={16} />
         </a>
+        <a
+          href="/carrinho"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1 lg:hidden"
+          aria-label={`Carrinho, ${cart?.items_count || 0} itens`}
+        >
+          <ShoppingBag size={20} aria-hidden="true" />
+          {cart?.items_count || 0}
+        </a>
         <button
           ref={toggle}
           type="button"
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg md:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg lg:hidden"
           aria-controls="mobile-navigation"
           aria-expanded={open}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -72,7 +100,7 @@ export function Header() {
         id="mobile-navigation"
         aria-label="Menu móvel"
         hidden={!open}
-        className="absolute inset-x-0 top-full border-y border-line bg-sand px-5 py-4 shadow-lg md:hidden"
+        className="absolute inset-x-0 top-full border-y border-line bg-sand px-5 py-4 shadow-lg lg:hidden"
       >
         {navigation.map((item) => (
           <a
@@ -84,6 +112,7 @@ export function Header() {
             {item.label}
           </a>
         ))}
+        <div className="flex gap-5">{commerceLinks}</div>
         <a
           onClick={() => setOpen(false)}
           href={whatsapp(messages.booking)}
