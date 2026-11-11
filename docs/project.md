@@ -46,7 +46,7 @@ O arquivo routeTree.gen.ts é gerado pelo plugin. Build gera dist/client (assets
 
 Home: Hero → Serviços → Produtos destacados → Sobre → Modalidades/horários → CTA → Footer. Hero, serviços, biografia, retrato e copy aprovados mantidos. A seção estática de produtos foi substituída conforme o pedido. Paleta #f7f3eb/#1e3327/#995a38, tipos e texturas preservados. Páginas internas usam hero botânico, cards claros, bordas discretas e controles consistentes.
 
-Carrossel com scroll snap/toque, setas, início/fim, foco e rolagem suave; sem autoplay. Skeletons reservam altura. Hover sutil de imagem e transições curtas sinalizam interação. Reduced motion remove escala/transição e usa scroll instantâneo. Header mantém WhatsApp e navegação da Home por /#âncora em páginas internas. Conta e carrinho presentes em desktop/mobile. Footer inclui quatro políticas e crédito exato.
+Carrossel com scroll snap/toque, setas, início/fim, foco e rolagem suave; sem autoplay. Skeletons reservam altura. Hover sutil de imagem e transições curtas sinalizam interação. Reduced motion remove escala/transição e usa scroll instantâneo. Header mantém WhatsApp e navegação da Home por /#âncora em páginas internas. Carrinho presente em desktop/mobile; Minha conta removido, compra de visitante. Footer inclui quatro políticas e crédito exato.
 
 ## WooCommerce, catálogo e cache
 
@@ -58,19 +58,21 @@ Sitemap dinâmico consulta catálogo público, inclui rotas institucionais/legai
 
 Cache persistente de origem: artefato adaptado em `wordpress/000-iya-store-api-cache.php`, **inativo por padrão**. Requer auditoria real e constante IYA_PUBLIC_CATALOG_CACHE_APPROVED antes de habilitar. Produtos/categorias apenas, bypass de cookies/auth/nonce/Cart-Token, invalidação estrita e parametrizada no shutdown. Não há prova de HIT/invalidação nesta loja. Instalação/homologação pendente, ver docs/wordpress.md.
 
-## Carrinho e checkout
+## Carrinho e checkout — revisão 11/11/2026
 
-Frontend fala somente com /api/cart e três ações fixas: add-item/update-item/remove-item. Worker valida origem, método, IDs, quantidades e chaves; obtém Cart-Token da origem e mantém cookie HttpOnly, SameSite=Lax, Secure em HTTPS. O token nunca aparece no bundle, localStorage ou resposta JSON do carrinho. Preço/estoque/totais vêm do WooCommerce. Sem cache público; sem logs de token ou dados pessoais. O cookie auxiliar apenas sinaliza existência da sessão para o contador.
+React usa /api/cart e ações fixas add-item/update-item/remove-item/recover. Cookie HttpOnly, SameSite=Lax, Secure em HTTPS; origem exata, IDs/quantidades e tamanhos limitados. Preços/estoque/totais vêm do WooCommerce. Rascunho local contém somente IDs e quantidades para recuperação explícita de sessão expirada. Foco/retorno à página revalidam o estado.
 
-Checkout é nativo WooCommerce. /api/checkout oferece formulário POST para admin-post.php, sem bearer na URL/history/referrer. O MU-plugin `010-iya-checkout.php` consulta a Store API com o token, revalida produtos/quantidades e refaz o carrinho na sessão nativa, calcula totais e usa wc_get_checkout_url(). Mantém domínio fixo e allowlist de origem; não é proxy aberto nem sistema de pedidos. Não se presume que Cart-Token vire cookie automaticamente. A ponte substitui o carrinho nativo pelos itens do frontend; em falha procura restaurar o anterior. Produtos que dependem de customizações/extensões exigem homologação adicional.
+Ponte versão 2: o Worker envia Cart-Token exclusivamente servidor→servidor. O WordPress valida JWT nativo e lê a sessão Store API; emite ticket aleatório de uso único/120s, vinculado à origem e impressão dos itens/cupons. Somente esse ticket passa por POST ao admin-post. Revalida produtos/variações/quantidades/estoque/cupons, recalcula preços, persiste a sessão nativa e restaura o carrinho anterior em falha. Hooks de pagamento confirmado reconciliam a origem com comparação atômica do valor persistido; novos itens não são apagados por pedido antigo. Não cria pedidos ou processa pagamentos por conta própria.
 
-**Pendente externamente:** instalar e validar ponte, sessão nativa, itens, frete Melhor Envio, campos brasileiros, Pix/cartão Mercado Pago, pedido, baixa/restauração de estoque, e-mails SMTP, retorno/cancelamento/recusa, conta autenticada. Nenhum pagamento ou pedido foi criado. Sem esses testes, a loja não está liberada para publicação.
+010-iya-checkout.php carrega a ponte; 020-iya-storefront.php carrega apresentação, compra de visitante e redirects públicos restritos. O shell preserva formulários/blocos/hooks/scripts nativos, endpoints de pagamento e estados reais. Implementação e testes PHP locais não substituem homologação financeira/logística. Pacote completo e rollback em docs/wordpress.md.
+
+**Pendente externamente:** instalação autorizada em homologação, HTTPS/SameSite entre domínios reais, Mercado Pago/Pix/cartão/webhooks, Melhor Envio/campos brasileiros/transportabilidade, SMTP/estoque/pedidos de teste e aprovação das políticas/dados comerciais. Nenhum pedido ou pagamento remoto foi criado. Não liberar pagamentos reais antes desses testes.
 
 ## SEO e segurança
 
 Titles/descriptions/canonical/OG/Twitter renderizados no servidor. Canonical sempre domínio principal. Product/Offer e BreadcrumbList usam dados reais; sem avaliações inventadas. WebSite preservado no documento da Home. Robots dinâmico bloqueia ambientes secundários; X-Robots-Tag noindex em qualquer host diferente do principal e em carrinho/API. HTML WooCommerce convertido para texto seguro, sem inserir HTML de produto via dangerouslySetInnerHTML. JSON-LD escapa `<`.
 
-Headers nos documentos/API: nosniff, X-Frame-Options DENY, Referrer-Policy; respostas sem cache por padrão. Sem CORS amplo no Worker. Não existem segredos/env obrigatórios: origens públicas fixas em commerce.ts. Não são enviados tokens ou dados pessoais a logs. Rotas de erro e 404 tratadas. No WordPress, ainda configurar canonical/noindex de produtos/categorias duplicadas e políticas coerentes no checkout, sem bloquear Store API, assets, conta ou pagamentos.
+Headers nos documentos/API: nosniff, X-Frame-Options DENY, Referrer-Policy; respostas sem cache por padrão. Sem CORS amplo no Worker. Não existem segredos/env obrigatórios: origens públicas fixas em commerce.ts. Não são enviados tokens ou dados pessoais a logs. Rotas de erro e 404 tratadas. No WordPress, ainda configurar canonical/noindex de produtos/categorias duplicadas e políticas coerentes no checkout, com redirects públicos específicos e preservação de Store API, assets e pagamentos.
 
 ## Políticas para revisão
 
@@ -86,3 +88,12 @@ Destaques na origem: a consulta real featured=true retornou zero itens; Home res
 ## Autorização de entrega — 04/11/2026
 
 O contratante autorizou explicitamente commit, push, PR, merge e deploy no Worker iyamarlene. A publicação usa workers.dev com noindex, preservando o domínio principal/DNS e o deployment Vercel existente. vercel.json recebe ignoreCommand=exit 0 para evitar publicação automática incompatível na Vercel após o merge. As pendências WordPress/comerciais/legais permanecem documentadas e não são consideradas homologadas por esse deploy.
+
+## Identidade e entrega local — 11/11/2026
+
+Header/Footer usam public/logo-iya-marlene.webp oficial, sem redesenho. Minha conta removido; carrinho e WhatsApp preservados. public/og-image.jpg 1200×630 foi criado conforme mockup por solicitação expressa, com metadados absolutos, dimensões e texto alternativo; produtos mantêm suas próprias imagens. Favicon oficial e derivados para Apple/manifest presentes. Políticas seguem como base para aprovação, ajustadas à compra de visitante sem dados empresariais inventados.
+
+Relatório vigente: docs/validation-finalization.md. A autorização de publicação de 04/11 foi executada na revisão anterior e não autoriza esta entrega. Nesta revisão não houve publicação, alteração remota WordPress, DNS ou cobrança. Não considerar homologação financeira/logística a partir de testes locais. Pacote preparado em artifacts/iya-wordpress-install.zip, sem fixtures/credenciais; instalar apenas em homologação autorizada, com backup e rollback descritos em docs/wordpress.md.
+## Publicação autorizada — 11/11/2026
+
+Após a entrega e apresentação dos bloqueios comerciais, o contratante solicitou expressamente commit, push, PR, merge e deploy desta revisão. Autoriza publicação do frontend no Worker iyamarlene em workers.dev; não inclui DNS/custom domain, instalação remota WordPress, mudança de credenciais financeiras ou cobranças. Vercel preservada. Os registros anteriores de ausência de publicação descrevem a fase local; os bloqueios financeiros/logísticos permanecem, e checkout continua fechado quando a ponte v2 está ausente.

@@ -1,5 +1,13 @@
 # Cloudflare — operação local e migração futura
 
+## Revisão de 11/11/2026
+
+A autorização de publicação de 04/11 foi executada naquela entrega e não autoriza publicar esta revisão. Nenhum novo deploy, merge, DNS, upload remoto ou alteração WordPress foi realizado. A Vercel permanece contingência.
+
+Ponte WordPress v2 e camada visual estão preparadas localmente; consultar docs/wordpress.md e docs/validation-finalization.md. Em testes isolados, VITE_STORE_ORIGIN pode apontar para WordPress em loopback antes de iniciar o Vite; omitir essa variável no build de produção para usar https://loja.iyamarlene.com.br. É configuração de build controlada pelo operador, nunca parâmetro recebido do navegador. Não contém credenciais.
+
+O pacote WordPress e o build Worker devem ser homologados em conjunto antes da publicação; bridge ausente/incompatível mantém checkout fechado com recuperação, sem perder carrinho. Instalação em homologação, gateways, logística, SMTP, políticas e HTTPS entre domínios reais continuam bloqueios externos.
+
 ## Preparação
 
 Use Node compatível com Vite 8 e Wrangler (ambiente observado: v22.16.0) e pnpm 10.18.3 conforme packageManager. `pnpm install --frozen-lockfile`. Sem variáveis ou segredos necessários: domínios públicos fixos em src/lib/commerce.ts. Não adicionar chaves WooCommerce ao navegador. Arquivos .dev.vars e env locais são ignorados.
@@ -43,3 +51,7 @@ Documentação oficial consultada em 04/11/2026:
 - https://tanstack.com/start/latest/docs/framework/react/build-from-scratch
 - https://developer.woocommerce.com/docs/apis/store-api/cart-tokens
 - https://developer.woocommerce.com/docs/apis/store-api/resources-endpoints/cart/
+
+## Publicação autorizada — 11/11/2026
+
+Após a entrega e apresentação dos bloqueios comerciais, o contratante solicitou expressamente commit, push, PR, merge e deploy desta revisão. Autoriza publicação do frontend no Worker iyamarlene em workers.dev; não inclui DNS/custom domain, instalação remota WordPress, mudança de credenciais financeiras ou cobranças. Vercel preservada. Os registros anteriores de ausência de publicação descrevem a fase local; os bloqueios financeiros/logísticos permanecem, e checkout continua fechado quando a ponte v2 está ausente.

@@ -18,7 +18,7 @@ export const Route = createFileRoute("/carrinho")({
   component: CartPage,
 });
 function CartPage() {
-  const { cart, busy, error, refresh, mutate } = useCart();
+  const { cart, busy, error, expired, recover, refresh, mutate } = useCart();
   useEffect(() => {
     void refresh();
   }, []);
@@ -29,10 +29,11 @@ function CartPage() {
       <div aria-live="polite" role="status">
         {error}
       </div>
+      {expired && <div className="my-6 rounded-lg border border-line p-5"><p className="mb-4">Você pode restaurar os itens em uma nova sessão. Preços e disponibilidade serão conferidos novamente pela loja.</p><button className="shop-button" disabled={busy} onClick={() => void recover()}>Restaurar meu carrinho</button></div>}
       {!cart ? (
         <div className="shop-empty">
-          <p>Carregando seu carrinho…</p>
-          {error && (
+          <p>{expired ? 'Restaure sua sessão para conferir os itens.' : error ? 'Seu carrinho não pôde ser carregado agora.' : 'Carregando seu carrinho…'}</p>
+          {error && !expired && (
             <button className="shop-button" onClick={() => void refresh()}>
               Tentar novamente
             </button>
@@ -121,7 +122,7 @@ function CartPage() {
                 Preços e estoque serão conferidos novamente.
               </p>
               <form method="post" action="/api/checkout">
-                <button disabled={busy} className="shop-button w-full">
+                <button disabled={busy || expired} className="shop-button w-full">
                   Continuar para o checkout ↗
                 </button>
               </form>

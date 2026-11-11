@@ -1,0 +1,36 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_ENVIRONMENT_TYPE": "local",
+        "IYA_CHECKOUT_ALLOWED_ORIGINS": [
+          "http://127.0.0.1:54001"
+        ]
+      },
+      "method": "rewrite-wp-config"
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "woocommerce"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; WC_Install::create_pages(); update_option('woocommerce_coming_soon','no'); update_option('woocommerce_currency','BRL'); update_option('woocommerce_enable_guest_checkout','yes'); update_option('woocommerce_enable_signup_and_login_from_checkout','no'); update_option('permalink_structure','/%postname%/'); foreach(['Produto local A','Produto local B'] as $i=>$name){$p=new WC_Product_Simple();$p->set_name($name);$p->set_regular_price($i?29.9:18.9);$p->set_manage_stock(true);$p->set_stock_quantity(10);$p->set_weight('0.2');$p->set_length('10');$p->set_width('10');$p->set_height('5');$p->set_status('publish');$p->save();} flush_rewrite_rules();"
+    }
+  ]
+}

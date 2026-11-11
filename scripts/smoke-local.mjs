@@ -17,7 +17,7 @@ const routes = [
   ["/politica-de-entrega", 200],
   ["/sitemap.xml", 200],
   ["/robots.txt", 200],
-  ["/favicon.svg", 200],
+  ["/favicon.ico", 200],
 ];
 for (const [path, status] of routes) {
   const start = performance.now();

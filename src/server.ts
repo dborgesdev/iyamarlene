@@ -51,7 +51,7 @@ export default {
     } else response = await handler.fetch(request);
     const secured = new Response(response.body, response);
     secured.headers.set("X-Content-Type-Options", "nosniff");
-    secured.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+    if (!secured.headers.has('Referrer-Policy')) secured.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
     secured.headers.set("X-Frame-Options", "DENY");
     if (
       response.status === 404 ||

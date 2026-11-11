@@ -1,5 +1,5 @@
 export const ORIGIN = "https://iyamarlene.com.br";
-export const STORE = "https://loja.iyamarlene.com.br";
+export const STORE = import.meta.env?.VITE_STORE_ORIGIN || "https://loja.iyamarlene.com.br";
 export interface Prices {
   price: string;
   currency_code: string;

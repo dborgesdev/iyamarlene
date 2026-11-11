@@ -117,7 +117,7 @@ test("cart keeps token HttpOnly and forwards only trusted fields", async () => {
 });
 test("checkout never redirects a bearer token through a URL", async () => {
   const previous = globalThis.fetch;
-  globalThis.fetch = async () => Response.json({ version: 1 });
+  globalThis.fetch = async (url) => Response.json(String(url).endsWith("/handoff") ? { ticket: "a".repeat(64) } : { version: 2 });
   try {
     const response = await cart.checkoutRequest(
       new Request("https://iyamarlene.com.br/api/checkout", {
@@ -131,7 +131,9 @@ test("checkout never redirects a bearer token through a URL", async () => {
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, /method="post"/);
-    assert.match(html, /name="cart_token"/);
+    assert.match(html, /name="ticket"/);
+    assert.equal(response.headers.get('Referrer-Policy'), 'strict-origin');
+    assert.equal(html.includes("test.token.sig"), false);
     assert.equal(response.headers.has("Location"), false);
     assert.match(response.headers.get("Cache-Control"), /no-store/);
   } finally {
@@ -157,4 +159,29 @@ test("checkout fails closed when the WordPress bridge is absent", async () => {
   } finally {
     globalThis.fetch = previous;
   }
+});
+
+test('expired sessions preserve the cookie and require explicit cart recovery', async () => {
+  const previous = globalThis.fetch;
+  globalThis.fetch = async () => Response.json({ code: 'expired' }, { status: 403 });
+  try {
+    const response = await cart.cartRequest(new Request('https://iyamarlene.com.br/api/cart', { headers: { Cookie: 'iya_cart=test.token.sig' } }));
+    assert.equal(response.status,409);
+    assert.equal((await response.json()).code,'session_expired');
+    assert.equal(response.headers.has('Set-Cookie'),false);
+  } finally { globalThis.fetch = previous; }
+});
+
+test('recovery revalidates IDs and quantities, ignoring browser prices', async () => {
+  const previous = globalThis.fetch; const bodies=[];
+  globalThis.fetch = async (url, options) => {
+    if (options.body) bodies.push(JSON.parse(options.body));
+    return Response.json({ items: [], items_count: 0, errors: [] }, { headers: { 'Cart-Token': 'new.token.sig' } });
+  };
+  try {
+    const response = await cart.cartRequest(new Request('https://iyamarlene.com.br/api/cart/recover', { method:'POST', headers:{ Origin:'https://iyamarlene.com.br', 'Content-Type':'application/json' }, body:JSON.stringify({ items:[{id:23,quantity:2,price:1}] }) }));
+    assert.equal(response.status,200);
+    assert.deepEqual(bodies,[{id:23,quantity:2}]);
+    assert.match(response.headers.get('Set-Cookie'),/HttpOnly/);
+  } finally { globalThis.fetch=previous; }
 });

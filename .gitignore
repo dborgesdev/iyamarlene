@@ -13,3 +13,4 @@ dist/
 .dev.vars
 .output/
 .test-output/
+/artifacts/
