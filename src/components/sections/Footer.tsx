@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="bg-sand py-8">
       <div className="container-site flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
-        <Brand />
+        <Brand variant="footer" />
         <nav
           aria-label="Navegação do rodapé"
           className="flex flex-wrap justify-center gap-x-5 gap-y-1 text-sm"

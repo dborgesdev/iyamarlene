@@ -5,6 +5,7 @@ import { plain } from "../lib/commerce";
 import { seo } from "../lib/seo";
 import { ProductCard } from "../components/products/ProductCard";
 export const Route = createFileRoute("/produtos")({
+  validateSearch: (search: Record<string, unknown>): { categoria?: string } => ({ categoria: typeof search.categoria === 'string' && /^[a-z0-9-]{1,200}$/.test(search.categoria) ? search.categoria : undefined }),
   loader: () => getCatalog(),
   head: () =>
     seo(
@@ -17,7 +18,8 @@ export const Route = createFileRoute("/produtos")({
 function Catalog() {
   const products = Route.useLoaderData();
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
+  const { categoria } = Route.useSearch();
+  const [category, setCategory] = useState(categoria || '');
   const [sort, setSort] = useState("default");
   const [limit, setLimit] = useState(12);
   const categories = [

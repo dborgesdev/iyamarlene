@@ -1,5 +1,7 @@
 # Validação da V1 comercial — 04/11/2026
 
+Registro histórico da primeira entrega. O relatório vigente da revisão de 11/11/2026 está em [validation-finalization.md](validation-finalization.md): marca oficial, remoção de Minha conta, ponte v2, pacote WordPress e novos testes. As observações abaixo sobre conta pública, versão anterior da ponte e destaques vazios descrevem 04/11 e não o estado atual do código. Publicação posterior daquela entrega não autoriza publicar a revisão atual.
+
 ## Resultado e limites
 
 Implementação local na branch feat/woocommerce-ssr-cloudflare. SSR, catálogo real, páginas individuais, carrinho Store API e artefatos Cloudflare funcionam no preview local. **Não liberada para publicação:** ponte WordPress e cache ainda não instalados/homologados; fluxo financeiro/logístico e políticas dependem de validação externa. Nenhum deploy, DNS, upload remoto, PR, merge, pedido ou pagamento foi executado.

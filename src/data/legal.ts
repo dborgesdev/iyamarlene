@@ -6,7 +6,7 @@ export const legalPages = {
     sections: [
       [
         "Dados necessários à compra",
-        "A loja WooCommerce solicita os dados necessários para cadastro, processamento de pedidos, pagamento, entrega e atendimento. Informações fiscais e de endereço são fornecidas no ambiente da loja, conforme o pedido. Não envie dados de cartão pelo WhatsApp.",
+        "A loja WooCommerce solicita os dados necessários para processamento de pedidos, pagamento, entrega e atendimento. Informações fiscais e de endereço são fornecidas no ambiente da loja, conforme o pedido. Não envie dados de cartão pelo WhatsApp.",
       ],
       [
         "Finalidades e bases legais",
@@ -18,7 +18,7 @@ export const legalPages = {
       ],
       [
         "Cookies e recursos externos",
-        "Cookies de sessão mantêm o carrinho e o acesso à conta. O frontend utiliza iya_cart (HttpOnly) e iya_cart_present para reconhecer a sessão de compra por até dois dias. O WooCommerce pode utilizar seus próprios cookies. As fontes são carregadas do Google Fonts; links de WhatsApp e Instagram levam a serviços externos. Recursos opcionais de análise ou publicidade precisam de avaliação específica antes de ativação.",
+        "Cookies de sessão mantêm o carrinho e a compra como visitante. O frontend utiliza iya_cart (HttpOnly) e iya_cart_present para reconhecer a sessão de compra por até dois dias. O WooCommerce pode utilizar seus próprios cookies. As fontes são carregadas do Google Fonts; links de WhatsApp e Instagram levam a serviços externos. Recursos opcionais de análise ou publicidade precisam de avaliação específica antes de ativação.",
       ],
       [
         "Seus direitos",
@@ -44,8 +44,8 @@ export const legalPages = {
         "Adicionar ao carrinho não reserva estoque. Preços, disponibilidade, frete e total são revalidados pela loja. A confirmação e o andamento do pedido seguem as informações apresentadas no checkout. Os meios de pagamento efetivamente disponíveis serão exibidos nesse ambiente.",
       ],
       [
-        "Conta e segurança",
-        "A conta do cliente é mantida no WooCommerce. Mantenha suas credenciais protegidas e forneça informações corretas para faturamento e entrega. O frontend não recebe nem processa pagamentos diretamente.",
+        "Compra de visitante e segurança",
+        "A compra pode ser realizada como visitante, sem criação de conta. Forneça informações corretas para faturamento e entrega. Os dados de pagamento são tratados no ambiente do gateway; o frontend não recebe nem processa pagamentos diretamente.",
       ],
       [
         "Atendimentos espirituais",

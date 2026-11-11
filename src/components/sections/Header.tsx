@@ -10,12 +10,6 @@ export function Header() {
   const commerceLinks = (
     <>
       <a
-        href="https://loja.iyamarlene.com.br/minha-conta/"
-        className="inline-flex min-h-11 items-center"
-      >
-        Minha conta
-      </a>
-      <a
         href="/carrinho"
         className="inline-flex min-h-11 items-center gap-1"
         aria-label={`Carrinho, ${cart?.items_count || 0} itens`}

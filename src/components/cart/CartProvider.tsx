@@ -11,6 +11,8 @@ interface State {
   cart: Cart | null;
   busy: boolean;
   error: string;
+  expired: boolean;
+  recover: () => Promise<void>;
   refresh: () => Promise<void>;
   mutate: (action: string, data: Record<string, unknown>) => Promise<boolean>;
 }
@@ -19,6 +21,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<Cart | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [expired, setExpired] = useState(false);
+  const draft = useRef<{ id: number; quantity: number }[]>([]);
   const lock = useRef(false);
   const pending = useRef<Promise<void> | null>(null);
   async function request(action = "", data?: Record<string, unknown>) {
@@ -28,12 +32,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
       body: data ? JSON.stringify(data) : undefined,
       cache: "no-store",
     });
-    const value = (await response.json()) as Cart & { message?: string };
-    if (!response.ok)
+    const value = (await response.json()) as Cart & { message?: string; code?: string };
+    if (!response.ok) {
+      if (value.code === 'session_expired') setExpired(true);
       throw new Error(
         value.message || "Não foi possível atualizar o carrinho.",
       );
+    }
     setCart(value);
+    setError("");
+    setExpired(false);
+    draft.current = value.items.map(({ id, quantity }) => ({ id, quantity }));
+    try { localStorage.setItem('iya_cart_draft', JSON.stringify(draft.current)); } catch { /* Cart authority remains WooCommerce when local persistence is unavailable. */ }
+  }
+  async function recover() {
+    await mutate('recover', { items: draft.current });
   }
   async function refresh() {
     if (pending.current) return pending.current;
@@ -55,7 +68,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       return true;
     } catch (e) {
       setError((e as Error).message);
-      await refresh();
+      if (action !== 'recover') await refresh();
       return false;
     } finally {
       lock.current = false;
@@ -63,10 +76,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }
   useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('iya_cart_draft') || '[]') as { id: number; quantity: number }[];
+      if (Array.isArray(saved)) draft.current = saved.filter(item => Number.isSafeInteger(item.id) && item.id > 0 && Number.isSafeInteger(item.quantity) && item.quantity > 0);
+    } catch { /* Invalid drafts do not override the server cart. */ }
     if (document.cookie.includes("iya_cart_present=1")) void refresh();
+    const revalidate = () => { if (document.visibilityState === 'visible' && document.cookie.includes('iya_cart_present=1')) void refresh(); };
+    window.addEventListener('focus', revalidate);
+    document.addEventListener('visibilitychange', revalidate);
+    return () => { window.removeEventListener('focus', revalidate); document.removeEventListener('visibilitychange', revalidate); };
   }, []);
   return (
-    <Context.Provider value={{ cart, busy, error, refresh, mutate }}>
+    <Context.Provider value={{ cart, busy, error, expired, recover, refresh, mutate }}>
       {children}
     </Context.Provider>
   );

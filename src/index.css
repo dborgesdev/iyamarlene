@@ -400,3 +400,6 @@ select:focus-visible,
   gap: 8px;
   font-size: 13px;
 }
+.brand img { display:block; width:124px; height:auto; }
+.brand-footer img { width:164px; }
+@media (max-width:767px) { .brand-header img { width:108px; } }
