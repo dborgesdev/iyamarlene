@@ -10,7 +10,7 @@ export function ProductPresentation({
       ref={sectionRef}
       id="produtos"
       aria-labelledby="products-title"
-      className="relative grid overflow-hidden bg-[#eee5d5] lg:min-h-110 lg:grid-cols-2"
+      className="relative grid overflow-hidden bg-surface lg:min-h-110 lg:grid-cols-2"
     >
       <figure className="relative min-w-0">
         <img
@@ -44,13 +44,13 @@ export function ProductPresentation({
           disponibilidade.
         </p>
         <ul
-          className="my-5 flex flex-wrap gap-2 text-sm text-forest"
+          className="my-5 flex flex-wrap gap-2 text-sm text-primary"
           aria-label="Produtos"
         >
           {["Banhos de ervas", "Sabonetes", "Perfumes"].map((name) => (
             <li
               key={name}
-              className="rounded-full border border-[#b7ad97] px-3 py-2"
+              className="rounded-full border border-line px-3 py-2"
             >
               {name}
             </li>

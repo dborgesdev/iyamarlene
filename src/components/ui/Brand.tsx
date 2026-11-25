@@ -2,10 +2,10 @@ export function Brand({ variant = 'header' }: { variant?: 'header' | 'footer' })
   return (
     <a
       href="/#inicio"
-      aria-label="Iyá Marlene, início"
+      aria-label="Saboaria Afinjolè, início"
       className={`brand brand-${variant} inline-flex shrink-0 items-center`}
     >
-      <img src="/logo-iya-marlene.webp" alt="Iyá Marlene" width={533} height={315} decoding="async" />
+      <img src="/logo-saboaria-afinjole.webp" alt="Saboaria Afinjolè" width={1086} height={362} decoding="async" />
     </a>
   );
 }

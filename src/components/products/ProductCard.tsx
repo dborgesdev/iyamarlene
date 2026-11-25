@@ -27,7 +27,7 @@ export function ProductCard({ product }: { product: Product }) {
         <h3 className="serif text-2xl">
           <a href={`/produto/${product.slug}`}>{product.name}</a>
         </h3>
-        <p className="my-3 text-lg font-semibold">
+        <p className="my-3 text-lg font-semibold text-primary">
           {product.prices.price_range
             ? `A partir de ${money(product.prices, product.prices.price_range.min_amount)}`
             : money(product.prices)}

@@ -9,7 +9,7 @@ assert.equal(config.assets.directory, "../client");
 assert.ok(config.compatibility_flags.includes("nodejs_compat"));
 await access("dist/server/index.js");
 await access("dist/client/favicon.ico");
-await access("dist/client/logo-iya-marlene.webp");
+await access("dist/client/logo-saboaria-afinjole.webp");
 await access("dist/client/og-image.jpg");
 for (const name of ["robots.txt", "sitemap.xml"]) {
   await assert.rejects(

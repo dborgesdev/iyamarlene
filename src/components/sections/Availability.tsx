@@ -19,16 +19,16 @@ export function Availability() {
           {availability.map((item) => (
             <article
               key={item.id}
-              className="flex flex-col items-start rounded-2xl border border-line bg-[#f0e9dc]/60 p-6 lg:p-8"
+              className="flex flex-col items-start rounded-2xl border border-line bg-surface/60 p-6 lg:p-8"
             >
               <h3 className="serif text-[27px] leading-tight">{item.title}</h3>
               <p className="mt-4 text-base leading-7 text-muted">
                 {item.days}
                 <br />
-                <span className="font-semibold text-forest">{item.hours}</span>
+                <span className="font-semibold text-primary">{item.hours}</span>
               </p>
               <WhatsAppLink
-                message={item.message}
+                message={item.message} emphasis="aged"
                 className="mt-5 w-full sm:w-auto"
               >
                 {item.cta}

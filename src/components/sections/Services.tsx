@@ -35,7 +35,7 @@ export function Services() {
           {services.map((item) => (
             <article
               key={item.index}
-              className="flex flex-col overflow-hidden rounded-2xl border border-[#dcd1bd] bg-[#f0e9dc]/85"
+              className="flex flex-col overflow-hidden rounded-2xl border border-line bg-surface/85"
             >
               <div className="aspect-[1.65] overflow-hidden">
                 <img
@@ -53,7 +53,7 @@ export function Services() {
                   }}
                 />
               </div>
-              <div className="relative mx-3 -mt-6 md:mx-2 lg:mx-3 flex grow flex-col rounded-t-2xl bg-[#f0e9dc] px-5 pb-6 pt-6 md:px-3 lg:px-5">
+              <div className="relative mx-3 -mt-6 md:mx-2 lg:mx-3 flex grow flex-col rounded-t-2xl bg-surface px-5 pb-6 pt-6 md:px-3 lg:px-5">
                 <h3 className="serif text-[27px] leading-tight md:min-h-17 tracking-[-.025em]">
                   {item.title}
                 </h3>
@@ -65,11 +65,11 @@ export function Services() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${item.cta}: ${item.title}`}
-                  className="mt-5 inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-primary hover:text-accent-deep"
                 >
                   <span>{item.cta}</span>
                   <ArrowRight
-                    className="shrink-0"
+                    className="shrink-0 text-accent-dark"
                     size={15}
                     aria-hidden="true"
                   />

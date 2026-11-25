@@ -29,7 +29,7 @@ final class Presentation {
     }
     public static function styles(): void {
         wp_enqueue_style('iya-commerce-fonts', 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap', [], null);
-        wp_enqueue_style('iya-commerce', plugins_url('../assets/commerce.css', __FILE__), [], '1.0.0');
+        wp_enqueue_style('iya-commerce', plugins_url('../assets/commerce.css', __FILE__), [], '1.1.0');
     }
     public static function template(string $template): string {
         if (!self::active()) return $template;
@@ -50,7 +50,7 @@ final class Presentation {
         if ($target) { wp_redirect($target, 301, 'Iya Marlene storefront'); exit; }
     }
     public static function logo(): string {
-        return plugins_url('../assets/logo-iya-marlene.webp', __FILE__);
+        return plugins_url('../assets/logo-saboaria-afinjole.webp', __FILE__);
     }
     public static function order_context(): ?array {
         $id = absint(get_query_var('order-received'));

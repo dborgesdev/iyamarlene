@@ -64,7 +64,7 @@ export function Footer() {
           href={DEVELOPER_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded py-1 hover:text-forest"
+          className="inline-block rounded py-1 hover:text-accent-dark"
         >
           Desenvolvido por Douglas Borges - Smart Local
         </a>

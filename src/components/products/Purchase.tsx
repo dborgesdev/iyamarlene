@@ -59,7 +59,7 @@ export function Purchase({
           />
         </label>
         <button
-          className="shop-button"
+          className="shop-button cta-aged"
           disabled={
             busy ||
             !Number.isInteger(quantity) ||
