@@ -8,7 +8,7 @@ defined('ABSPATH') || exit;
 <?php wp_body_open(); ?>
 <a class="iya-skip" href="#iya-content">Pular para o conteúdo</a>
 <header class="iya-header">
- <a class="iya-brand" href="<?php echo esc_url(Storefront::FRONT . '/'); ?>" aria-label="Iyá Marlene, início"><img src="<?php echo esc_url(Storefront::logo()); ?>" alt="Iyá Marlene" width="533" height="315"></a>
+ <a class="iya-brand" href="<?php echo esc_url(Storefront::FRONT . '/'); ?>" aria-label="Saboaria Afinjolè, início"><img src="<?php echo esc_url(Storefront::logo()); ?>" alt="Saboaria Afinjolè" width="1086" height="362"></a>
  <nav aria-label="Navegação principal"><a href="<?php echo esc_url(Storefront::FRONT . '/'); ?>">Início</a><a href="<?php echo esc_url(Storefront::FRONT . '/#atendimentos'); ?>">Atendimentos</a><a href="<?php echo esc_url(Storefront::FRONT . '/produtos'); ?>">Produtos</a><a href="<?php echo esc_url(Storefront::FRONT . '/#sobre'); ?>">Sobre</a></nav>
  <a class="iya-booking" href="<?php echo esc_url(Storefront::WHATSAPP . '?text=' . rawurlencode('Olá, Iyá Marlene! Gostaria de agendar um atendimento.')); ?>" target="_blank" rel="noopener noreferrer">Agendar atendimento ↗</a>
 </header>

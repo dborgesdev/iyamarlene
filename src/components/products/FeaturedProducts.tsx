@@ -52,7 +52,7 @@ export function FeaturedProducts() {
     <section
       ref={section}
       id="produtos"
-      className="section-space bg-[#eee5d5]"
+      className="section-space bg-surface"
       aria-labelledby="products-title"
     >
       <div className="container-site">

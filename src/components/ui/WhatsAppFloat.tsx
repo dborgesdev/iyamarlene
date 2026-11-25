@@ -79,7 +79,7 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Agendar consulta pelo WhatsApp"
-      className="fixed z-40 flex h-14 w-14 items-center justify-center rounded-full border border-white/70 bg-forest text-white shadow-lg transition-colors hover:bg-[#14251c] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-clay"
+      className="fixed z-40 flex h-14 w-14 items-center justify-center rounded-full border border-white/70 bg-primary text-sand shadow-lg transition-colors hover:bg-primary-hover focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-accent-dark"
       style={{
         right: "max(20px, env(safe-area-inset-right))",
         bottom: "max(20px, env(safe-area-inset-bottom))",

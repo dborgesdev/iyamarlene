@@ -40,7 +40,7 @@ for (let reload = 0; reload < 2; reload++) {
   const checkout = await fetch(location, { headers: { Cookie: cookie } });
   const html = await checkout.text();
   assert.equal(checkout.status, 200);
-  assert.match(html, /iya-commerce/); assert.match(html, /logo-iya-marlene/);
+  assert.match(html, /iya-commerce/); assert.match(html, /logo-saboaria-afinjole/);
   assert.match(html, /Desenvolvido por Douglas Borges - Smart Local/);
   const native = await fetch(`${api}/cart`, { headers: { Cookie: cookie } }).then(r => r.json());
   assert.deepEqual(native.items.map(item => [item.id, item.quantity]).sort(), expected);

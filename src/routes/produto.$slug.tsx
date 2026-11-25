@@ -96,7 +96,7 @@ function Detail() {
             {p.categories.map((c) => c.name).join(" · ")}
           </p>
           <h1 className="section-title">{p.name}</h1>
-          <p className="serif my-7 text-3xl">
+          <p className="serif my-7 text-3xl text-primary">
             {p.prices.price_range
               ? `A partir de ${money(p.prices, p.prices.price_range.min_amount)}`
               : money(p.prices)}

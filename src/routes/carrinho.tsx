@@ -67,7 +67,7 @@ function CartPage() {
                         .map((v) => `${v.attribute}: ${v.value}`)
                         .join(" / ")}
                     </p>
-                    <p className="my-3">
+                    <p className="my-3 text-primary">
                       {money(item.prices, item.totals.line_total)}
                     </p>
                     <div className="flex flex-wrap gap-4 items-end">
@@ -113,7 +113,7 @@ function CartPage() {
               <h2 className="serif text-3xl mb-6">Resumo</h2>
               <div className="flex justify-between gap-3">
                 <span>Subtotal dos produtos</span>
-                <strong>
+                <strong className="text-primary">
                   {money({ ...cart.totals, price: cart.totals.total_items })}
                 </strong>
               </div>
@@ -122,7 +122,7 @@ function CartPage() {
                 Preços e estoque serão conferidos novamente.
               </p>
               <form method="post" action="/api/checkout">
-                <button disabled={busy || expired} className="shop-button w-full">
+                <button disabled={busy || expired} className="shop-button cta-aged w-full">
                   Continuar para o checkout ↗
                 </button>
               </form>

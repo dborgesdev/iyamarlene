@@ -22,6 +22,19 @@ Extrair o pacote sobre a raiz de uma **homologação com backup**, somente após
 
 Não é necessário trocar o tema instalado ou copiar código em plugins financeiros. A apresentação seleciona seu próprio shell apenas em checkout/order-pay/order-received e mantém the_content(), wp_head(), wp_footer() e os scripts/blocos/hooks nativos. CSS atende blocos e clássico. Não foi criado gateway, processador de webhook, formulário financeiro React, serviço de frete ou sistema de pedidos paralelo.
 
+## Atualização cromática — 25/11/2026
+
+Para aplicar a atualização visual em uma homologação que já tenha este pacote instalado, copiar estes arquivos para `wp-content/mu-plugins/iya-storefront/`:
+
+- `assets/commerce.css`
+- `assets/favicon.ico`
+- `assets/logo-saboaria-afinjole.webp`
+- `includes/class-presentation.php`
+- `templates/header.php`
+- `templates/footer.php`
+
+A classe de apresentação referencia o novo logo e incrementa a versão do CSS para atualizar o cache do navegador.
+
 ## Configuração de visitante
 
 Conferir também idioma pt-BR, país/estado da loja, moeda, páginas e visibilidade coming-soon no painel autorizado. Não preencher endereço/CEP ou alterar visibilidade da loja publicada por suposição. O blueprint local desativa somente a tela coming-soon da instância descartável para inspecionar o checkout; o diagnóstico somente leitura informa essa opção. A configuração financeira/logística da produção não é reproduzida pelas fixtures locais.

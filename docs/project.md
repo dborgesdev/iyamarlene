@@ -44,9 +44,17 @@ O arquivo routeTree.gen.ts é gerado pelo plugin. Build gera dist/client (assets
 
 ## Jornada, identidade e movimento
 
-Home: Hero → Serviços → Produtos destacados → Sobre → Modalidades/horários → CTA → Footer. Hero, serviços, biografia, retrato e copy aprovados mantidos. A seção estática de produtos foi substituída conforme o pedido. Paleta #f7f3eb/#1e3327/#995a38, tipos e texturas preservados. Páginas internas usam hero botânico, cards claros, bordas discretas e controles consistentes.
+Home: Hero → Serviços → Produtos destacados → Sobre → Modalidades/horários → CTA → Footer. Hero, serviços, biografia, retrato e copy aprovados mantidos. A seção estática de produtos foi substituída conforme o pedido. Paleta atual na seção Identidade cromática. Tipos e texturas preservados. Páginas internas usam hero botânico, cards claros, bordas discretas e controles consistentes.
 
 Carrossel com scroll snap/toque, setas, início/fim, foco e rolagem suave; sem autoplay. Skeletons reservam altura. Hover sutil de imagem e transições curtas sinalizam interação. Reduced motion remove escala/transição e usa scroll instantâneo. Header mantém WhatsApp e navegação da Home por /#âncora em páginas internas. Carrinho presente em desktop/mobile; Minha conta removido, compra de visitante. Footer inclui quatro políticas e crédito exato.
+
+## Identidade cromática — 25/11/2026
+
+- Azul-marinho `primary` #08243E, com `primary-deep` #061A30 e `primary-hover` #123B59. Dourados `accent` #B88635, `accent-light` #E8B85F, `accent-dark` #92621E e `accent-deep` #765018.
+- Marfim `sand` #F7F3EB, areia `surface` #EEE5D5, `surface-light` #FCF9F2 e divisores `line` #DCD2C1. Texto corrido `body` #444A50 e secundário `muted` #62666A.
+- O Hero usa uma camada azul que se dissolve sobre a fotografia, título marfim e destaque dourado. Sobre usa azul profundo e Contato usa dourado profundo. Atendimentos, produtos, horários e rodapé usam superfícies claras. Os logos React usam a arte Saboaria Afinjolè em tamanhos responsivos ampliados.
+- Dourado luminoso indica agendamento no Hero e no cabeçalho. Dourado envelhecido indica compra, checkout e agendamento nas modalidades, com texto azul. Ações institucionais usam azul, e ações secundárias usam marfim ou contorno. Catálogo, carrinho, rotas internas e shell WooCommerce compartilham a paleta.
+- Usar contraste WCAG AA de 4,5:1 para texto normal e 3:1 para texto grande, foco e indicadores relevantes. Usar dourado escuro para texto sobre superfícies claras e preservar cores semânticas de status.
 
 ## WooCommerce, catálogo e cache
 

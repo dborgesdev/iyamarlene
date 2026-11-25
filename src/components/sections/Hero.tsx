@@ -7,7 +7,7 @@ export function Hero() {
     <section
       id="inicio"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden bg-sand"
+      className="relative isolate overflow-hidden bg-primary-deep text-sand"
     >
       <picture className="block lg:absolute lg:inset-0 lg:-z-20">
         <source
@@ -28,7 +28,7 @@ export function Hero() {
       <div className="hero-wash pointer-events-none absolute inset-0 -z-10" />
       <div className="container-site relative pb-52 pt-7 sm:pb-62 sm:pt-10 lg:flex lg:min-h-[650px] lg:items-center lg:pb-16 lg:pt-32">
         <div className="max-w-xl lg:w-[49%] lg:max-w-[550px]">
-          <p className="eyebrow mb-5 max-w-65 leading-6">
+          <p className="eyebrow eyebrow-on-dark mb-5 max-w-65 leading-6">
             Cuidado espiritual
             <br />
             para o seu caminho
@@ -40,21 +40,21 @@ export function Hero() {
             Orientação,
             <br />
             escuta e<br />
-            <span className="italic text-clay">acolhimento</span>
+            <span className="italic text-accent-light">acolhimento</span>
           </h1>
-          <p className="mt-6 max-w-108 text-base leading-8 text-muted ">
+          <p className="mt-6 max-w-108 text-base leading-8 text-sand/90">
             Com Iyá Marlene, conheça um trabalho de orientação e cuidado
             espiritual por meio dos oráculos, trabalhos e elementos da natureza.
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <WhatsAppLink message={messages.booking}>
+            <WhatsAppLink message={messages.booking} emphasis="bright">
               Agendar uma consulta
             </WhatsAppLink>
             <a
               href="#atendimentos"
               className="inline-flex min-h-11 items-center gap-2 text-[15px] font-medium"
             >
-              Conhecer atendimentos <ArrowDown size={15} aria-hidden="true" />
+              Conhecer atendimentos <ArrowDown className="text-accent-light" size={15} aria-hidden="true" />
             </a>
           </div>
         </div>
